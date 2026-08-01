@@ -1,0 +1,43 @@
+---
+import { ToastContainer } from "react-toastify";
+import { SolicitudForm } from "./SolicitudForm";
+// Define the variables that will be used in this component
+const title: string = "Comience su solicitud";
+const subTitle: string = "";
+const formTitle: string = "Complete el formulario de solicitud";
+const formSubTitle: string = "Nos estaremos comunicando con usted en breve";
+---
+
+<!-- Start Your Aplication  -->
+<section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+  <div class="mx-auto max-w-2xl lg:max-w-5xl">
+    <div class="text-center">
+      <ToastContainer client:load />
+      <h1 class="text-balance font-gotham text-2xl tracking-tight text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight">
+        {title}
+      </h1>
+      <p class="mt-1 text-pretty font-nunito text-neutral-600 dark:text-neutral-400">
+        {subTitle}
+      </p>
+    </div>
+
+    <div class="mt-12 flex items-center justify-center">
+      <div class="flex flex-col rounded-xl p-4 sm:p-6 lg:p-8">
+        <h2 class="mb-8 text-center font-nunito text-xl text-neutral-700 dark:text-neutral-300">
+          {formTitle}
+        </h2>
+        <SolicitudForm formSubTitle={formSubTitle} client:load />
+         <!-- Botón de descarga -->
+         <div class="mt-8 text-center">
+          <a 
+            href="/files/Contrato.pdf" 
+            download 
+            class="inline-block bg-yellow-400 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-yellow-400 transition-colors transform hover:scale-105"
+          >
+            Contrato de adhesión
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

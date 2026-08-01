@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "Gotham";
+  src: url("/src/assets/fonts/Gotham-Black-Regular.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("/src/assets/fonts/Nunito-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

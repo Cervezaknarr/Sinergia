@@ -1,0 +1,20 @@
+---
+import { FaWhatsapp } from 'react-icons/fa';
+
+const { PhoneNumber, Message } = Astro.props;
+const encodedMessage = encodeURIComponent(Message);
+const whatsappURL = `https://wa.me/${PhoneNumber}?text=${encodedMessage}`;
+---
+<div class="group">
+  <a href={whatsappURL} target="_blank" rel="noopener noreferrer" class="flex cursor-pointer items-center gap-4">
+    <FaWhatsapp
+      size={40}
+      className="fill-current text-black ring-zinc-500 group-hover:text-neutral-500 dark:text-neutral-400 dark:ring-zinc-200 dark:focus:outline-none dark:group-hover:text-neutral-500"
+    />
+    <h3
+      class="rounded-lg text-base text-sm font-bold font-medium text-black outline-none ring-zinc-500 group-hover:text-neutral-500 dark:text-neutral-400 dark:ring-zinc-200 dark:focus:outline-none dark:group-hover:text-neutral-500 md:py-3 md:text-sm 2xl:text-base"
+    >
+      {PhoneNumber}
+    </h3>
+  </a>
+</div>

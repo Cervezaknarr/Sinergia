@@ -1,0 +1,10 @@
+---
+import ArrepentimientoSection from "@/components/sections/ArrepentimientoSection.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { SITE } from "@data/constants";
+const pageTitle: string = `Arrepentimiento | ${SITE.title}`;
+---
+
+<MainLayout title={pageTitle}>
+  <ArrepentimientoSection />
+</MainLayout>

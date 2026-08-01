@@ -1,0 +1,9 @@
+{
+  "date": "1° de octubre 2025",
+  "items": [
+    { "label": "Anual", "value": "46,02%" },
+    { "label": "Semestral", "value": "18,40%" },
+    { "label": "Cuatrimestral", "value": "10,03%" },
+    { "label": "Trimestral", "value": "6,53%" }
+  ]
+}

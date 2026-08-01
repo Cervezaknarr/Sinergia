@@ -1,0 +1,20 @@
+---
+import { ArrepentimientoFormInfo } from "@/data_files/constants";
+import { ArrepentimientoForm } from "./ArrepentimientoForm";
+import { ToastContainer } from "react-toastify";
+
+const { title, description } = ArrepentimientoFormInfo;
+---
+
+<section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:my-12 lg:px-8">
+  <div class="mx-auto flex max-w-2xl flex-col gap-8 lg:max-w-5xl">
+    <ToastContainer client:load />
+    <h1 class="text-center font-gotham text-2xl tracking-tight text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight">{title}</h1>
+    <p class="mt-1 text-pretty font-nunito text-neutral-600 dark:text-neutral-400">
+      {description}
+    </p>
+    <div>
+      <ArrepentimientoForm client:load />
+    </div>
+  </div>
+</section>

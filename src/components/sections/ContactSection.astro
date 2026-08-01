@@ -1,0 +1,35 @@
+---
+// Import the necessary dependencies.
+
+import { EmailContactForm } from "@components/sections/EmailContactForm.tsx";
+import { ToastContainer } from "react-toastify";
+// Define the variables that will be used in this component
+const title: string = "Contáctenos";
+const subTitle: string = "¿Tiene dudas? pregúntenos y le responderemos a la brevedad.";
+const formTitle: string = "Complete los siguientes campos";
+const formSubTitle: string = "Le responderemos en breve.";
+---
+
+<!-- Contact Us -->
+<section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+  <div class="mx-auto max-w-2xl lg:max-w-5xl">
+    <div class="text-center">
+      <ToastContainer client:load />
+      <h1 class="text-balance font-gotham text-2xl tracking-tight text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight">
+        {title}
+      </h1>
+      <p class="mt-1 text-pretty font-nunito text-neutral-600 dark:text-neutral-400">
+        {subTitle}
+      </p>
+    </div>
+
+    <div class="mt-12 flex items-center justify-center">
+      <div class="flex flex-col rounded-xl p-4 sm:p-6 lg:p-8">
+        <h2 class="mb-8 text-center font-nunito text-xl text-neutral-700 dark:text-neutral-300">
+          {formTitle}
+        </h2>
+        <EmailContactForm formSubTitle={formSubTitle} client:load />
+      </div>
+    </div>
+  </div>
+</section>
