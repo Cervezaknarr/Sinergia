@@ -4,7 +4,7 @@ export const SITE = {
   title: "Sinergia Valores S.A",
   tagline: "El puente hacia tu nuevo hogar Sinergia Valores.",
   description:
-    "Garantiza tu futuro hogar en segundos - Solicita una fianza con nosotros.",
+    "Garantiza tu futuro hogar en segundos - Solicita una garantía con nosotros.",
   description_short: "Garantiza tu futuro hogar en segundos.",
   url: "https://www.sinergiavalores.com",
   author: "Justo Becerra Y Nico De Caroli :)",
@@ -185,6 +185,6 @@ export const OG = {
   url: SITE.url,
   title: `${SITE.title}`,
   description:
-    "Sinergia Valores Sistema de fianzas de alquiler 100 % digital con calificacion en 24 hs.",
+    "Sinergia Valores Sistema de garantías de alquiler 100 % digital con calificacion en 24 hs.",
   image: ogImageSrc,
 };
