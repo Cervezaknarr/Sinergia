@@ -1,4 +1,9 @@
 {
+  "functions": {
+    "__render": {
+      "runtime": "nodejs24.x"
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",
