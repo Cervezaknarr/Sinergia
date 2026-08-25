@@ -3,12 +3,14 @@
 import AvatarBlog from "@components/ui/avatars/AvatarBlog.astro";
 import { Image } from "astro:assets";
 import { formatDate } from "@utils/utils";
-import type { CollectionEntry } from "astro:content";
 
 const { blogEntry, blogLocale = "" } = Astro.props;
 
+// NOTE: this component is currently unused (no callers in src/) and predates
+// this project's use of Astro content collections, so its Props type is
+// intentionally loose rather than backed by a real "blog" collection.
 interface Props {
-  blogEntry: CollectionEntry<"blog">;
+  blogEntry: any;
   blogLocale?: string;
 }
 ---
