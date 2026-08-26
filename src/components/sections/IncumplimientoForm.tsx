@@ -9,6 +9,7 @@ type Props = {
 export const IncumplimientoForm = ({ formSubTitle }: Props) => {
   const [handleAlert, setHandleAlert] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [formTimestamp] = useState<number>(() => Date.now());
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -38,7 +39,14 @@ export const IncumplimientoForm = ({ formSubTitle }: Props) => {
       apellidoinquilino,
       tipoinquilino,
       numerodocumentoinquilino,
+      empresa,
     } = Object.fromEntries(formData);
+
+    if (empresa) {
+      // Campo honeypot completado: lo tratamos como bot y no mostramos error.
+      setIsSubmitting(false);
+      return;
+    }
 
     if (
       !nombre ||
@@ -114,6 +122,7 @@ export const IncumplimientoForm = ({ formSubTitle }: Props) => {
           </div>
           `,
           reply_to: email,
+          formTimestamp,
         }),
       });
 
@@ -178,6 +187,20 @@ export const IncumplimientoForm = ({ formSubTitle }: Props) => {
 
   return (
     <form method="POST" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="empresa"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          left: "-9999px",
+          width: "1px",
+          height: "1px",
+          opacity: 0,
+        }}
+      />
       <div className="flex flex-col justify-between gap-16 md:flex-row md:flex-wrap">
         <div className="grid h-full gap-4">
           <h1 className="text-balance text-center font-gotham text-xl tracking-tight text-neutral-800 dark:text-neutral-200 md:text-2xl md:leading-tight">

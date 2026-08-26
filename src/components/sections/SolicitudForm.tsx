@@ -9,9 +9,17 @@ type Props = {
 export const SolicitudForm = ({ formSubTitle }: Props) => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [formTimestamp] = useState<number>(() => Date.now());
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const honeypotCheck = new FormData(e.currentTarget).get("empresa");
+    if (honeypotCheck) {
+      // Campo honeypot completado: lo tratamos como bot y no mostramos error.
+      setIsSubmitting(false);
+      return;
+    }
 
     if (!isChecked) {
       toast.warn("Debe aceptar los términos y condiciones para continuar.", {
@@ -111,6 +119,7 @@ export const SolicitudForm = ({ formSubTitle }: Props) => {
             <li>Como nos conocio: ${comoNosConocio}</li>
           </ul>`,
           reply_to: email,
+          formTimestamp,
         }),
       });
 
@@ -159,6 +168,20 @@ export const SolicitudForm = ({ formSubTitle }: Props) => {
 
   return (
     <form method="POST" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="empresa"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          left: "-9999px",
+          width: "1px",
+          height: "1px",
+          opacity: 0,
+        }}
+      />
       <div className="grid gap-4">
         {/* Sección Nombre y Apellido */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">

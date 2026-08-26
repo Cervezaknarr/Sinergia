@@ -1,10 +1,31 @@
 import type { APIRoute } from "astro";
 import { Resend } from "resend";
 
+const MIN_SUBMIT_TIME_MS = 3000;
+
 export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
-    const { to, from, html, subject, text, reply_to } = body;
+    const { to, from, html, subject, text, reply_to, honeypot, formTimestamp } =
+      body;
+
+    // Trampa para bots: si completaron el campo oculto, o respondieron
+    // demasiado rápido, se descarta el envío sin avisarles del bloqueo.
+    const submittedTooFast =
+      typeof formTimestamp === "number" &&
+      Date.now() - formTimestamp < MIN_SUBMIT_TIME_MS;
+
+    if (honeypot || submittedTooFast) {
+      return new Response(
+        JSON.stringify({
+          message: "OK",
+        }),
+        {
+          status: 200,
+          statusText: "OK",
+        },
+      );
+    }
 
     const resend = new Resend(import.meta.env.RESEND_API_KEY);
     const send = await resend.emails.send({

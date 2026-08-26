@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 export const ArrepentimientoForm = () => {
   const [handleAlert, setHandleAlert] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [formTimestamp] = useState<number>(() => Date.now());
   const {
     name,
     nacionality,
@@ -17,8 +18,21 @@ export const ArrepentimientoForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const { name, nacionality, mail, idnumber, phonenumber, serviceorproduct } =
-      Object.fromEntries(formData);
+    const {
+      name,
+      nacionality,
+      mail,
+      idnumber,
+      phonenumber,
+      serviceorproduct,
+      empresa,
+    } = Object.fromEntries(formData);
+
+    if (empresa) {
+      // Campo honeypot completado: lo tratamos como bot y no mostramos error.
+      setIsSubmitting(false);
+      return;
+    }
 
     if (
       !name ||
@@ -56,6 +70,7 @@ export const ArrepentimientoForm = () => {
             <li>Servicio o producto: ${serviceorproduct}</li>
           </ul>`,
           reply_to: mail,
+          formTimestamp,
         }),
       });
 
@@ -119,6 +134,20 @@ export const ArrepentimientoForm = () => {
   }, [handleAlert]);
   return (
     <form method="POST" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="empresa"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          left: "-9999px",
+          width: "1px",
+          height: "1px",
+          opacity: 0,
+        }}
+      />
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <label className="sr-only">{name}</label>
         <input

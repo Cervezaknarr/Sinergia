@@ -9,12 +9,19 @@ type Props = {
 export const EmailContactForm = ({ formSubTitle }: Props) => {
   const [handleAlert, setHandleAlert] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [formTimestamp] = useState<number>(() => Date.now());
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const { nombre, apellido, email, numerodetelefono, consulta } =
+    const { nombre, apellido, email, numerodetelefono, consulta, empresa } =
       Object.fromEntries(formData);
+
+    if (empresa) {
+      // Campo honeypot completado: lo tratamos como bot y no mostramos error.
+      setIsSubmitting(false);
+      return;
+    }
 
     if (!nombre || !apellido || !email || !numerodetelefono || !consulta) {
       setHandleAlert(true);
@@ -42,6 +49,7 @@ export const EmailContactForm = ({ formSubTitle }: Props) => {
             <li>Consulta: ${consulta}</li>
           </ul>`,
           reply_to: email,
+          formTimestamp,
         }),
       });
 
@@ -106,6 +114,20 @@ export const EmailContactForm = ({ formSubTitle }: Props) => {
 
   return (
     <form method="POST" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="empresa"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          left: "-9999px",
+          width: "1px",
+          height: "1px",
+          opacity: 0,
+        }}
+      />
       <div className="grid gap-4">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <label className="sr-only">Nombre</label>
