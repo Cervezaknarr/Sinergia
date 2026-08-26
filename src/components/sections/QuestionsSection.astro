@@ -11,20 +11,26 @@ const makeId = (base: any, index: any) => `${base}${index + 1}`;
       Preguntas Frecuentes
     </h1>
   </div>
-  <div class="mx-auto flex max-w-2xl flex-col gap-8 lg:max-w-5xl">
-    <div class="md:col-span-3">
-      <div class="hs-accordion-group divide-y divide-neutral-200 dark:divide-neutral-700">
-        {
-          questionsFrecuentes.map((question, i) => {
-            // Generate ids dynamically for each FAQ accordion item.
-            let id = makeId("hs-basic-with-title-and-arrow-stretched-heading-", i);
-            let collapseId = makeId("hs-basic-with-title-and-arrow-stretched-collapse", i);
+  <div class="mx-auto flex max-w-2xl flex-col gap-12 lg:max-w-5xl">
+    {
+      questionsFrecuentes.map((group, groupIndex) => (
+        <div class="flex flex-col gap-4">
+          <h2 class="border-b border-neutral-300 pb-2 font-gotham text-xl font-bold text-neutral-800 dark:border-neutral-700 dark:text-neutral-200 md:text-2xl">
+            {group.category}
+          </h2>
+          <div class="hs-accordion-group divide-y divide-neutral-200 dark:divide-neutral-700">
+            {group.faqs.map((question, i) => {
+              // Los ids deben ser unicos en toda la pagina, por eso incluyen el indice del grupo.
+              let base = `${groupIndex + 1}-`;
+              let id = makeId(`hs-basic-with-title-and-arrow-stretched-heading-${base}`, i);
+              let collapseId = makeId(`hs-basic-with-title-and-arrow-stretched-collapse-${base}`, i);
 
-            return <AccordionItem {...question} id={id} collapseId={collapseId} first={i === 0} />;
-          })
-        }
-      </div>
-    </div>
+              return <AccordionItem {...question} id={id} collapseId={collapseId} first={groupIndex === 0 && i === 0} />;
+            })}
+          </div>
+        </div>
+      ))
+    }
   </div>
 </section>
 <script is:inline src="/scripts/vendor/preline/accordion/index.js"></script>
