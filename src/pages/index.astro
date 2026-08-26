@@ -4,6 +4,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import HeroSection from "@components/sections/landing/HeroSection.astro";
 import HeroSectionAlt from "@components/sections/landing/HeroSectionAlt.astro";
 import FeaturesNavs from "@components/sections/features/FeaturesNavs.astro";
+import CalcuSectionReact from "@/components/sections/CalcuSectionReact";
 import TestimonialsSection from "@components/sections/testimonials/TestimonialsSection.astro";
 import PricingSection from "@components/sections/pricing/PricingSection.astro";
 import FAQ from "@components/sections/FAQ.astro";
@@ -33,7 +34,7 @@ import updates from "@data/updates.json";
       primaryBtn="Solicita tu Garantía"
       primaryBtnURL="/solicitud"
       secondaryBtn="Calcula costos"
-      secondaryBtnURL="/calculadora"
+      secondaryBtnURL="/#calculadora"
       withReview={true}
       rating=`<span class="font-bold">4.8</span> / 5`
       starCount={4}
@@ -41,6 +42,8 @@ import updates from "@data/updates.json";
       src={heroImage}
       alt=""
     />
+
+    <CalcuSectionReact client:load />
 
     <!-- <DollarSection client:load /> -->
 

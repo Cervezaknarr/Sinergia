@@ -1,15 +1,5 @@
 ---
-// Import the necessary components
-import CalcuSection from "@/components/sections/CalcuSection.astro";
-import CalcuSectionReact from "@/components/sections/CalcuSectionReact";
-import MainLayout from "@/layouts/MainLayout.astro";
-import { SITE } from "@data/constants";
-
-const pageTitle: string = `Calculadora | ${SITE.title}`;
+// La calculadora ahora vive embebida en la home (seccion #calculadora).
+// Se mantiene esta ruta como redirect para no romper links externos/SEO existentes.
+return Astro.redirect("/#calculadora", 301);
 ---
-
-<!--Utilizing MainLayout for the outer layout of the page, and defining meta for SEO purposes-->
-<MainLayout title={pageTitle}>
-  <!-- <CalcuSection /> -->
-  <CalcuSectionReact client:load />
-</MainLayout>
