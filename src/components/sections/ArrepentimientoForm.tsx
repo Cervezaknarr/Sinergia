@@ -71,9 +71,32 @@ export const ArrepentimientoForm = () => {
           theme: "dark",
           transition: Bounce,
         });
+      } else {
+        toast.error("No se pudo enviar el email. Intente nuevamente.", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          transition: Bounce,
+        });
       }
     } catch (e) {
       console.log(e);
+      toast.error("No se pudo enviar el email. Intente nuevamente.", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      });
     } finally {
       setIsSubmitting(false);
     }
