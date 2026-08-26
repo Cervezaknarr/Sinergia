@@ -7,7 +7,7 @@ export const SITE = {
     "Garantiza tu futuro hogar en segundos - Solicita una fianza con nosotros.",
   description_short: "Garantiza tu futuro hogar en segundos.",
   url: "https://www.sinergiavalores.com",
-  author: "Justo Becerra Y Nico De Caroli :)",
+  author: "Alvaro Goncalves Y Nico De Caroli :)",
 };
 
 export const SEO = {
@@ -164,7 +164,7 @@ export const questionsFrecuentes = [
       },
       {
         question: "¿QUÉ NECESITO PARA COTIZAR EL SERVICIO?",
-        answer: `ES POSIBLE MEDIANTE LA <a href="/calculadora" class="${faqLink}">CALCULADORA INTEGRADA</a> TENER UN PRESUPUESTO APROXIMADO. EL PRESUPUESTO FINAL SE CONCLUYE EN BASE A LOS VALORES REALES DEL CONTRATO DE ALQUILER Y LA DOCUMENTACIÓN REQUERIDA.`,
+        answer: `ES POSIBLE MEDIANTE LA <a href="/#calculadora" class="${faqLink}">CALCULADORA INTEGRADA</a> TENER UN PRESUPUESTO APROXIMADO. EL PRESUPUESTO FINAL SE CONCLUYE EN BASE A LOS VALORES REALES DEL CONTRATO DE ALQUILER Y LA DOCUMENTACIÓN REQUERIDA.`,
       },
       {
         question: "¿QUÉ ES EL PROGRAMA DE CUMPLIMIENTO ÓPTIMO DE SINERGIA?",
@@ -188,7 +188,7 @@ export const questionsFrecuentes = [
       },
       {
         question: "¿PUEDO SABER SI CALIFICO ANTES DE ELEGIR LA PROPIEDAD?",
-        answer: `CLARO, NO NECESITAS PERDER EL TIEMPO, <a href="/calculadora" class="${faqLink}">COTIZÁ EN 30 SEGUNDOS DE MANERA GRATUITA</a> Y LUEGO OBTENÉ TU <a href="/solicitud" class="${faqLink}">PRE-APROBACIÓN</a>.`,
+        answer: `CLARO, NO NECESITAS PERDER EL TIEMPO, <a href="/#calculadora" class="${faqLink}">COTIZÁ EN 30 SEGUNDOS DE MANERA GRATUITA</a> Y LUEGO OBTENÉ TU <a href="/solicitud" class="${faqLink}">PRE-APROBACIÓN</a>.`,
       },
       {
         question: "¿CUÁNTO TIEMPO TARDA EN APROBARSE LA GARANTÍA DE ALQUILER?",
@@ -203,7 +203,7 @@ export const questionsFrecuentes = [
       {
         question:
           "¿NECESITO TENER UNA PROPIEDAD DEFINIDA PARA COTIZAR EL SERVICIO?",
-        answer: `NO ES NECESARIO, MEDIANTE LA <a href="/calculadora" class="${faqLink}">CALCULADORA INTEGRADA</a> ES POSIBLE COTIZAR DE MANERA GRATUITA Y 100 % ONLINE INDICANDO EL MONTO DE ALQUILER Y EXPENSAS.`,
+        answer: `NO ES NECESARIO, MEDIANTE LA <a href="/#calculadora" class="${faqLink}">CALCULADORA INTEGRADA</a> ES POSIBLE COTIZAR DE MANERA GRATUITA Y 100 % ONLINE INDICANDO EL MONTO DE ALQUILER Y EXPENSAS.`,
       },
       {
         question: "¿TENGO UN CERTIFICADO DE RESPALDO?",

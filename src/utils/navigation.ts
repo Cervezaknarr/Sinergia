@@ -2,7 +2,6 @@ const navBarLinks = [
   { name: "Inicio", url: "/" },
   { name: "Solicitud", url: "/solicitud" },
   { name: "Ayuda", url: "/ayuda" },
-  { name: "Calculadora", url: "/calculadora" },
   { name: "Contacto", url: "/contacto" },
   { name: "Incumplimiento", url: "/incumplimiento" },
 ];
@@ -44,7 +43,7 @@ const footerLinks = [
     section: "Servicios",
     links: [
       { name: "Ayuda", url: "/ayuda" },
-      { name: "Calculadora", url: "/calculadora" },
+      { name: "Calculadora", url: "/#calculadora" },
       { name: "Solicitud", url: "/solicitud" },
     ],
   },

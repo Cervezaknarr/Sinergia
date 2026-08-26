@@ -105,16 +105,16 @@ const CalcuSectionReact: React.FC = () => {
   const promocionValidaHasta = getLastDayOfMonth();
 
   return (
-    <section className="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-      <div className="mt-12 grid items-center gap-6 lg:grid-cols-2 lg:gap-16">
-        <div className="flex flex-col rounded-xl p-4 sm:p-6 lg:p-8">
-          <h1 className="space-xs-2 mb-6 flex items-center justify-center gap-4 text-2xl font-bold tracking-wider text-black">
+    <section id="calculadora" className="mx-auto max-w-[85rem] scroll-mt-24 px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+      <div className="flex flex-col gap-10">
+        <div className="mx-auto flex w-full max-w-2xl flex-col rounded-xl p-4 sm:p-6 lg:p-8">
+          <h2 className="space-xs-2 mb-6 flex items-center justify-center gap-4 text-2xl font-bold tracking-wider text-black">
             <IoCalculatorSharp className="text-text-yellow-400 dark:text-yellow-400" />
             <span className="text-text-neutral-700 dark:text-white">
               {formTitle}
             </span>
             <IoCalculatorSharp className="text-text-yellow-400 dark:text-yellow-400" />
-          </h1>
+          </h2>
 
           <form id="calculatorForm" onSubmit={handleSubmit}>
             <div className="grid gap-4">
@@ -232,16 +232,15 @@ const CalcuSectionReact: React.FC = () => {
           </form>
         </div>
         {/* The results section */}
-        {/* <div className="flex flex-col justify-between gap-4 md:flex-row"> */}
-        <div className="flex flex-col gap-6 md:flex-row">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {/* Tarjeta 1: 10% OFF */}
-          <div className="dark:bg-yellow-600 flex flex-1 flex-col rounded-lg bg-yellow-500 p-8 text-center text-black shadow-lg">
+          <div className="dark:bg-yellow-600 flex flex-col rounded-lg bg-yellow-500 p-6 text-center text-black shadow-lg lg:p-8">
             <div className="flex h-full flex-col">
               {" "}
-              <h2 className="mb-4 text-3xl font-bold">
+              <h3 className="mb-4 text-xl font-bold lg:text-3xl">
                 15% OFF - Pago contado
-              </h2>
-              <div id="result10Off" className="my-4 text-5xl font-semibold">
+              </h3>
+              <div id="result10Off" className="my-4 text-4xl font-semibold lg:text-5xl">
                 ${resultados.resultadoMenosDiezPorciento}
               </div>
               <p className="text-lg">(con 15% de descuento incluido)</p>
@@ -279,16 +278,16 @@ const CalcuSectionReact: React.FC = () => {
           </div>
 
           {/* Tarjeta 2: 25% Anticipo + 3 cuotas */}
-          <div className="flex flex-1 flex-col rounded-lg bg-yellow-400 p-8 text-center text-black shadow-lg dark:bg-yellow-400">
+          <div className="flex flex-col rounded-lg bg-yellow-400 p-6 text-center text-black shadow-lg dark:bg-yellow-400 lg:p-8">
             <div className="flex h-full flex-col">
-              <h2 className="mb-4 text-3xl font-bold">
+              <h3 className="mb-4 text-xl font-bold lg:text-3xl">
                 25% Anticipo + 3 cuotas sin interés
-              </h2>
-              <div id="anticipo25" className="my-4 text-5xl font-semibold">
+              </h3>
+              <div id="anticipo25" className="my-4 text-4xl font-semibold lg:text-5xl">
                 ${resultados.anticipo25}
               </div>
               <p className="text-lg">Anticipo</p>
-              <div id="cuotas25" className="my-4 text-5xl font-semibold">
+              <div id="cuotas25" className="my-4 text-4xl font-semibold lg:text-5xl">
                 ${resultados.cuota25}
               </div>
               <p className="text-lg">
@@ -310,16 +309,16 @@ const CalcuSectionReact: React.FC = () => {
           </div>
 
           {/* Tarjeta 3: 50% Anticipo + 6 cuotas */}
-          <div className="flex flex-1 flex-col rounded-lg bg-yellow-400 p-8 text-center text-black shadow-lg dark:bg-yellow-400">
+          <div className="flex flex-col rounded-lg bg-yellow-400 p-6 text-center text-black shadow-lg dark:bg-yellow-400 lg:p-8">
             <div className="flex h-full flex-col">
-              <h2 className="mb-4 text-3xl font-bold">
+              <h3 className="mb-4 text-xl font-bold lg:text-3xl">
                 50% Anticipo + 6 cuotas sin interés
-              </h2>
-              <div id="anticipo50" className="my-4 text-5xl font-semibold">
+              </h3>
+              <div id="anticipo50" className="my-4 text-4xl font-semibold lg:text-5xl">
                 ${resultados.anticipo50}
               </div>
               <p className="text-lg">Anticipo</p>
-              <div id="cuotas50" className="my-4 text-5xl font-semibold">
+              <div id="cuotas50" className="my-4 text-4xl font-semibold lg:text-5xl">
                 ${resultados.cuota50}
               </div>
               <p className="text-lg">
