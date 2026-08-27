@@ -22,7 +22,9 @@ import familiaEle from "@images/familiaEle.jpeg";
 import casaEle from "@images/casaEle.jpeg";
 import { fade } from "astro:transitions";
 import UpdateBanner from "@components/sections/UpdateBanner.astro";
-import updates from "@data/updates.json";
+import { getRentalIndices } from "@/lib/rentalIndices";
+
+const rentalIndices = await getRentalIndices();
 ---
 <meta name="google-site-verification" content="Op6aoDLtTX-3du-rvTUIEHfc0I4vjVlcnWxIG0HvGYk" />
 <MainLayout>
@@ -100,7 +102,7 @@ import updates from "@data/updates.json";
       ]}
     />
 
-    <UpdateBanner date={updates.date} items={updates.items} />
+    <UpdateBanner items={rentalIndices} />
 
     <FAQ title="Preguntas Frecuentes" faqs={faqs} />
 
