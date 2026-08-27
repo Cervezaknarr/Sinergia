@@ -1,0 +1,18 @@
+{
+  "_source": "https://www.argentina.gob.ar/obras-publicas/coeficiente-casa-propia — PDF 'Coeficiente de actualización de los Créditos Casa Propia' (no hay API ni tabla estructurada, solo este PDF que cambia de nombre cada mes)",
+  "_instrucciones": "Cada mes, abrir el PDF de la página oficial y agregar al final del array el nuevo mes con su coeficiente. Mantener el orden cronológico ascendente y al menos los últimos 12 meses (se usan los últimos 12 para calcular la variación interanual compuesta).",
+  "coefficients": [
+    { "month": "2025-10", "value": 1.0306 },
+    { "month": "2025-11", "value": 1.0281 },
+    { "month": "2025-12", "value": 1.0264 },
+    { "month": "2026-01", "value": 1.0244 },
+    { "month": "2026-02", "value": 1.0233 },
+    { "month": "2026-03", "value": 1.0229 },
+    { "month": "2026-04", "value": 1.0227 },
+    { "month": "2026-05", "value": 1.0229 },
+    { "month": "2026-06", "value": 1.0230 },
+    { "month": "2026-07", "value": 1.0234 },
+    { "month": "2026-08", "value": 1.0239 },
+    { "month": "2026-09", "value": 1.0233 }
+  ]
+}

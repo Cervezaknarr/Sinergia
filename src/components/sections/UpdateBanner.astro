@@ -1,15 +1,23 @@
 ---
-const { date = "1° de octubre 2025", items = [] } = Astro.props;
-
 interface UpdateItem {
   label: string;
-  value: string;
+  value: string | null;
+  date?: string | null;
+  unavailable?: boolean;
 }
 
 interface Props {
-  date?: string;
   items?: UpdateItem[];
 }
+
+const { items = [] } = Astro.props;
+
+const INDEX_DESCRIPTIONS: Record<string, string> = {
+  ICP: "Coeficiente Casa Propia",
+  IPC: "Índice de Precios al Consumidor",
+  UVA: "Unidad de Valor Adquisitivo",
+  ICL: "Índice para Contratos de Locación",
+};
 ---
 
 <section role="region" aria-label="Actualización de alquileres" class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
@@ -26,7 +34,7 @@ interface Props {
           Actualización de Alquileres
         </h3>
         <p class="mt-1 font-nunito text-sm xl:text-base 2xl:text-lg text-neutral-600 dark:text-neutral-400">
-          <strong class="text-yellow-500 dark:text-yellow-400">{date}</strong> — Índice de Contrato de Locación (ICL)
+          Variación interanual de los índices de referencia, actualizados automáticamente desde fuentes oficiales
         </p>
       </div>
     </div>
@@ -35,11 +43,22 @@ interface Props {
     <div class="grid gap-6 xl:gap-8 2xl:gap-10 md:grid-cols-2 lg:grid-cols-4">
       {items.map((item: UpdateItem) => (
         <div class="rounded-lg border border-neutral-200 bg-neutral-50 p-4 xl:p-6 2xl:p-8 text-center dark:border-neutral-700 dark:bg-neutral-800">
-          <div class="font-gotham text-2xl xl:text-3xl 2xl:text-4xl font-bold text-yellow-500 dark:text-yellow-400">
-            {item.value}
+          <div class:list={[
+            "font-gotham text-2xl xl:text-3xl 2xl:text-4xl font-bold",
+            item.unavailable ? "text-neutral-400 dark:text-neutral-600" : "text-yellow-500 dark:text-yellow-400",
+          ]}>
+            {item.unavailable || !item.value ? "S/D" : item.value}
           </div>
           <div class="mt-1 xl:mt-2 font-nunito text-sm xl:text-base 2xl:text-lg font-medium text-neutral-700 dark:text-neutral-300">
             {item.label}
+          </div>
+          {INDEX_DESCRIPTIONS[item.label] && (
+            <div class="mt-0.5 font-nunito text-xs xl:text-sm text-neutral-500 dark:text-neutral-400">
+              {INDEX_DESCRIPTIONS[item.label]}
+            </div>
+          )}
+          <div class="mt-1 font-nunito text-xs xl:text-sm text-neutral-400 dark:text-neutral-500">
+            {item.unavailable || !item.date ? "Dato no disponible" : `Dato a ${item.date}`}
           </div>
         </div>
       ))}
@@ -48,7 +67,7 @@ interface Props {
     <!-- Footer -->
     <div class="mt-6 xl:mt-8 2xl:mt-10 border-t border-neutral-200 pt-4 xl:pt-6 2xl:pt-8 dark:border-neutral-700">
       <p class="font-nunito text-xs xl:text-sm 2xl:text-base text-neutral-500 dark:text-neutral-400">
-        <strong>Fuente:</strong> Colegio de Martilleros y Corredores Públicos — Departamento Judicial La Plata
+        <strong>Fuentes:</strong> ICP — Secretaría de Obras Públicas (argentina.gob.ar) · IPC — INDEC (datos.gob.ar) · UVA e ICL — BCRA
       </p>
     </div>
   </div>
